@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class ItemDetailViewController : UIViewController {
+    
+    @IBAction func navigateToProfileViewController(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "ProfileViewController", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as UIViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
+}

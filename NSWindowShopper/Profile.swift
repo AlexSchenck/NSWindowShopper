@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Profile {
+    
+    var displayName : String?;
+    var dateJoined : NSDate?;
+    var ratingScore : NSNumber?;
+    var ratingCount : Int?;
+    var avatarURL : String?;
+
+}

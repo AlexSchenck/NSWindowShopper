@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import CoreLocation
+
+class Item {
+ 
+    var profile : Profile?;
+    var name : String?;
+    var description : String?;
+    var price : NSNumber?;
+    var location : CLLocation?;
+    var locationName : String?;
+    var datePosted : NSDate?;
+    var imageURL : String?;
+    
+}
