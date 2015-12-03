@@ -16,4 +16,12 @@ class Profile {
     var ratingCount : Int?;
     var avatarURL : String?;
 
+    init(displayName : String, dateJoined : NSDate, ratingScore : NSNumber, ratingCount : Int, avatarURL : String) {
+        self.displayName = displayName
+        self.dateJoined = dateJoined
+        self.ratingScore = ratingScore
+        self.ratingCount = ratingCount
+        self.avatarURL = avatarURL
+    }
+    
 }
