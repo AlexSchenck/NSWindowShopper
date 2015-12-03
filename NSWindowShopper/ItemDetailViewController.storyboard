@@ -17,21 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ItemDetail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vva-4o-Hnn">
-                                <rect key="frame" x="62" y="89" width="78" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vva-4o-Hnn">
+                                <rect key="frame" x="259" y="376" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azU-Qa-dmd">
-                                <rect key="frame" x="37" y="139" width="129" height="30"/>
+                                <rect key="frame" x="211" y="510" width="129" height="30"/>
                                 <state key="normal" title="Navigate To Profile"/>
                                 <connections>
                                     <action selector="navigateToProfileViewController:" destination="T83-if-l2B" eventType="touchUpInside" id="upn-ql-Avg"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zv3-cj-ZPj">
+                                <rect key="frame" x="172" y="84" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="VRB-7l-eDV"/>
+                                    <constraint firstAttribute="height" constant="256" id="dgm-Gg-zzh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zv3-cj-ZPj" firstAttribute="top" secondItem="GnR-2j-CES" secondAttribute="bottom" constant="80" id="69B-p3-y3d"/>
+                            <constraint firstItem="Zv3-cj-ZPj" firstAttribute="centerX" secondItem="S38-xb-9vU" secondAttribute="centerX" id="9fT-nY-Qht"/>
+                            <constraint firstItem="vva-4o-Hnn" firstAttribute="centerX" secondItem="S38-xb-9vU" secondAttribute="centerX" id="OvQ-ey-Dhm"/>
+                            <constraint firstItem="vva-4o-Hnn" firstAttribute="top" secondItem="Zv3-cj-ZPj" secondAttribute="bottom" constant="36" id="rdU-vH-851"/>
+                            <constraint firstItem="Zv3-cj-ZPj" firstAttribute="centerX" secondItem="S38-xb-9vU" secondAttribute="centerX" id="tC1-Xf-AP2"/>
+                            <constraint firstItem="Zv3-cj-ZPj" firstAttribute="top" secondItem="GnR-2j-CES" secondAttribute="bottom" constant="64" id="vTc-SQ-h4F"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="69B-p3-y3d"/>
+                                <exclude reference="9fT-nY-Qht"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUC-3l-wGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
