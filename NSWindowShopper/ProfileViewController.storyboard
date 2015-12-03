@@ -16,7 +16,36 @@
                     <view key="view" contentMode="scaleToFill" id="cV3-4K-J7B">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AcM-uC-oBb">
+                                <rect key="frame" x="180" y="52" width="240" height="198"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="nxq-lY-gRK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Since" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-UZ-aen">
+                                <rect key="frame" x="245" y="316" width="111" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xC5-YZ-YAU">
+                                <rect key="frame" x="278" y="275" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ijd-UZ-aen" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="1EV-g6-OQg"/>
+                            <constraint firstItem="ijd-UZ-aen" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="296" id="HRS-xM-wkv"/>
+                            <constraint firstItem="AcM-uC-oBb" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="I6i-zH-H5t"/>
+                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="255" id="Mz4-0W-QAO"/>
+                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="AcM-uC-oBb" secondAttribute="bottom" constant="350" id="O8q-dT-b2i"/>
+                            <constraint firstItem="AcM-uC-oBb" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="32" id="daC-e3-z1n"/>
+                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="uZg-EU-dtV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh5-fE-SI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
