@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E83F5BB1C11101700060CEC /* SearchResultsProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83F5BA1C11101700060CEC /* SearchResultsProxy.swift */; };
 		9DFDE2DD1C0E9294007DFE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */; };
 		9DFDE2E41C0E9294007DFE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */; };
 		9DFDE2E71C0E9294007DFE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDE2E51C0E9294007DFE93 /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E83F5BA1C11101700060CEC /* SearchResultsProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsProxy.swift; path = Network/SearchResultsProxy.swift; sourceTree = "<group>"; };
 		9DFDE2D91C0E9294007DFE93 /* NSWindowShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSWindowShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E83F5B91C110FF200060CEC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4E83F5BA1C11101700060CEC /* SearchResultsProxy.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		9DFDE2D01C0E9294007DFE93 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 				9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */,
 				9DFDE2E51C0E9294007DFE93 /* LaunchScreen.storyboard */,
 				9DFDE2E81C0E9294007DFE93 /* Info.plist */,
+				4E83F5B91C110FF200060CEC /* Network */,
 				9DFDE2FF1C0E99BC007DFE93 /* Model */,
 				9DFDE2FE1C0E99B1007DFE93 /* Views */,
 			);
@@ -180,6 +191,7 @@
 			files = (
 				9DFDE2DD1C0E9294007DFE93 /* AppDelegate.swift in Sources */,
 				9DFDE2F11C0E9305007DFE93 /* HomeViewController.swift in Sources */,
+				4E83F5BB1C11101700060CEC /* SearchResultsProxy.swift in Sources */,
 				9DFDE2F91C0E95AE007DFE93 /* ProfileViewController.swift in Sources */,
 				9DFDE3031C0E99E0007DFE93 /* Profile.swift in Sources */,
 				9DFDE2F31C0E951D007DFE93 /* ItemDetailViewController.swift in Sources */,
@@ -324,6 +336,7 @@
 				9DFDE2ED1C0E9294007DFE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

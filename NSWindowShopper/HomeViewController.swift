@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 class HomeViewController : UIViewController {
+    
+    var itemsToDisplay : [Item]?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad();
+
+        loadItems();
+    }
+    
+    // MARK - IBAction
 
     @IBAction func handleItemDetailNavigation(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
@@ -22,5 +32,21 @@ class HomeViewController : UIViewController {
         let vc = storyboard.instantiateViewControllerWithIdentifier("SearchSettingsViewController") as UIViewController
         let navController = UINavigationController(rootViewController: vc);
         self.presentViewController(navController, animated: true, completion: nil)
+    }
+    
+    // MARK - Network Interactions
+    
+    func loadItems() {
+        weak var weakSelf = self;
+        SearchResultsProxy().loadDefaultItemsWithCompletionHandler { (items) -> Void in
+            if (weakSelf != nil && items != nil) {
+                weakSelf!.itemsToDisplay = items;
+                weakSelf!.reloadCurrentViewController();
+            }
+        }
+    }
+    
+    func reloadCurrentViewController() {
+        
     }
 }
