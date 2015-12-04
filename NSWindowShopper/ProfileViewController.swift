@@ -17,24 +17,24 @@ class ProfileViewController : UIViewController {
     @IBOutlet weak var profileRatingBar: UIProgressView!
     @IBOutlet weak var profileImage: UIImageView!
     
-    var testProfile = Profile(displayName: "Harry McDonough", dateJoined: NSDate(), ratingScore: 3.7, ratingCount: 47, avatarURL: "https://graph.facebook.com/1069772458/picture?type=normal&return_ssl_resources=true")
+    var testProfile : Profile? //= Profile(displayName: "Harry McDonough", dateJoined: NSDate(), ratingScore: 3.7, ratingCount: 47, avatarURL: "https://graph.facebook.com/1069772458/picture?type=normal&return_ssl_resources=true")
     
     override func viewDidLoad() {
-        if let url = NSURL(string: testProfile.avatarURL!) {
+        if let url = NSURL(string: testProfile!.avatarURL!) {
             if let data = NSData(contentsOfURL: url) {
                 profileImage.image = UIImage(data: data)
             }        
         }
         profileImage.clipsToBounds = true
         
-        profileName.text = testProfile.displayName
+        profileName.text = testProfile!.displayName
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        profileMemberSince.text = "Member since: " + dateFormatter.stringFromDate(testProfile.dateJoined!)
-        let rating = Float(Double(testProfile.ratingScore!) * 0.2)
+        profileMemberSince!.text = "Member since: " + dateFormatter.stringFromDate(testProfile!.dateJoined!)
+        let rating = Float(Double(testProfile!.ratingScore!) * 0.2)
         profileRatingBar.setProgress(rating, animated: false)
         
-        profileRating.text = String(rating * 100) + "% satisfaction across " + String(testProfile.ratingCount!) + " reviews"
+        profileRating.text = String(rating * 100) + "% satisfaction across " + String(testProfile!.ratingCount!) + " reviews"
     }
 }

@@ -23,13 +23,14 @@ class HomeViewController : UIViewController {
 
     @IBAction func handleItemDetailNavigation(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailViewController") as UIViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailViewController") as! ItemDetailViewController
+        vc.sampleItem = self.itemsToDisplay![0]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleSearchSettingsNavigation(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "SearchSettingsViewController", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("SearchSettingsViewController") as UIViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SearchSettingsViewController") as! SearchSettingsViewController
         let navController = UINavigationController(rootViewController: vc);
         self.presentViewController(navController, animated: true, completion: nil)
     }
