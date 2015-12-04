@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 
 class ProfileViewController : UIViewController {
-    var testProfile = Profile(displayName: "Harry McDonough", dateJoined: NSDate(), ratingScore: 3.7, ratingCount: 47, avatarURL: "https://graph.facebook.com/1069772458/picture?type=normal&return_ssl_resources=true")
     
     @IBOutlet weak var profileRating: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileMemberSince: UILabel!
     @IBOutlet weak var profileRatingBar: UIProgressView!
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    var testProfile = Profile(displayName: "Harry McDonough", dateJoined: NSDate(), ratingScore: 3.7, ratingCount: 47, avatarURL: "https://graph.facebook.com/1069772458/picture?type=normal&return_ssl_resources=true")
     
     override func viewDidLoad() {
         if let url = NSURL(string: testProfile.avatarURL!) {
