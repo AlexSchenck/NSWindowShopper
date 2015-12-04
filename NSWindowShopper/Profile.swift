@@ -24,4 +24,8 @@ class Profile {
         self.avatarURL = avatarURL
     }
     
+    init() {
+        
+    }
+    
 }
