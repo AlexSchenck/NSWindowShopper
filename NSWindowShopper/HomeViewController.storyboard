@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--NSWindowShopper-->
         <scene sceneID="dW9-qH-tmk">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="KvN-R2-HKv" customClass="HomeViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="NSWindowShopper" id="KvN-R2-HKv" customClass="HomeViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lA9-PY-XvB"/>
                         <viewControllerLayoutGuide type="bottom" id="sMd-4b-2tD"/>
@@ -31,14 +32,99 @@
                                     <action selector="handleSearchSettingsNavigation:" destination="KvN-R2-HKv" eventType="touchUpInside" id="dxs-IY-vGq"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1li-oE-G56">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-4A-5y1">
+                                        <rect key="frame" x="20" y="8" width="560" height="29"/>
+                                        <segments>
+                                            <segment title="List"/>
+                                            <segment title="Waterfall"/>
+                                            <segment title="WindowShopper"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentedControlChangedValue:" destination="KvN-R2-HKv" eventType="valueChanged" id="7UB-Pf-MWD"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96034760589318591" green="0.96034760589318591" blue="0.96034760589318591" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NNk-4A-5y1" firstAttribute="centerY" secondItem="1li-oE-G56" secondAttribute="centerY" id="GSG-zM-x0q"/>
+                                    <constraint firstAttribute="trailing" secondItem="NNk-4A-5y1" secondAttribute="trailing" constant="20" id="I6a-k4-zM5"/>
+                                    <constraint firstItem="NNk-4A-5y1" firstAttribute="leading" secondItem="1li-oE-G56" secondAttribute="leading" constant="20" id="luG-wU-xQu"/>
+                                    <constraint firstAttribute="height" constant="44" id="xLq-WM-KiR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1li-oE-G56" firstAttribute="top" secondItem="lA9-PY-XvB" secondAttribute="bottom" id="9aF-Nn-hq2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1li-oE-G56" secondAttribute="trailing" constant="-20" id="gRs-XD-e6f"/>
+                            <constraint firstItem="1li-oE-G56" firstAttribute="leading" secondItem="Akb-od-cKa" secondAttribute="leadingMargin" constant="-20" id="zUV-Zh-m5w"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="viewSelector" destination="NNk-4A-5y1" id="HcV-gq-vdP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxL-eY-jZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453" y="510"/>
+            <point key="canvasLocation" x="153" y="436"/>
+        </scene>
+        <!--Item Collection View Controller-->
+        <scene sceneID="Icg-tL-CY5">
+            <objects>
+                <viewController storyboardIdentifier="ItemCollectionViewController" id="nc2-2l-W7n" customClass="ItemCollectionViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eD5-0Y-UKJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="SHx-Gh-O1K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LAb-u0-NMI" customClass="UICollectionView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5L-CA-R60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="436"/>
+        </scene>
+        <!--Window Shopper View Controller-->
+        <scene sceneID="h3g-9T-Zdj">
+            <objects>
+                <viewController storyboardIdentifier="WindowShopperViewController" id="PDt-x4-WcV" customClass="WindowShopperViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="she-bs-3Zo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ejs-Sg-ARk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y1e-SI-m39">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pAh-Xv-X3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="1103"/>
+        </scene>
+        <!--ItemListController-->
+        <scene sceneID="1Em-rp-2v6">
+            <objects>
+                <viewController storyboardIdentifier="ItemListTableViewController" title="ItemListController" id="r70-sW-NtA" customClass="ItemListTableViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6C-eI-5Hl"/>
+                        <viewControllerLayoutGuide type="bottom" id="oni-QY-rtY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VKg-Su-wte" customClass="UITableView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJ4-oK-P36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="-238"/>
         </scene>
     </scenes>
 </document>
