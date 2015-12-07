@@ -17,6 +17,7 @@ class ItemDetailViewController : UIViewController {
     @IBOutlet weak var ItemLocation: UILabel!
     @IBOutlet weak var DatePosted: UILabel!
     @IBOutlet weak var ItemDescription: UILabel!
+    @IBOutlet weak var ToProfileButton: UIButton!
     
     //var sampleItem = Item(profile: Profile(), name: "Football", description: "Boy howdy this football sure is golly gee swell you should buy the hell out of it", price: NSNumber(int: 20), location: CLLocation(), locationName: "Seattle, WA", datePosted: NSDate(), imageURL: "https://beccasheppard.files.wordpress.com/2011/09/football.jpg")
     
@@ -38,7 +39,17 @@ class ItemDetailViewController : UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         DatePosted.text = "Posted on \(dateFormatter.stringFromDate(sampleItem!.datePosted!))"
         
-        ItemDescription.text = sampleItem!.description
+        if (sampleItem!.description != "") {
+            ItemDescription.text = sampleItem!.description
+        } else {
+            ItemDescription.text = "There is no description for this item."
+        }
+        
+        let vendorName = sampleItem!.profile!.displayName!
+        
+        if (vendorName != "") {
+            ToProfileButton.setTitle("\(vendorName)'s Profile", forState: UIControlState.Normal)
+        }
     }
     
     @IBAction func navigateToProfileViewController(sender: AnyObject) {
