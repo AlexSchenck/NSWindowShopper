@@ -32,11 +32,11 @@ class ItemDetailViewController : UIViewController {
         ItemImage.clipsToBounds = true
         
         ItemName.text = "\(sampleItem!.name!), $\(sampleItem!.price!.stringValue)"
-        ItemLocation.text = sampleItem!.locationName!
+        ItemLocation.text = "Located in \(sampleItem!.locationName!)"
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        DatePosted.text = "Posted: \(dateFormatter.stringFromDate(sampleItem!.datePosted!))"
+        DatePosted.text = "Posted on \(dateFormatter.stringFromDate(sampleItem!.datePosted!))"
         
         ItemDescription.text = sampleItem!.description
     }
