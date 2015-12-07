@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+protocol NeedsDataFromSearchResults {
+
+    func reloadWithData(items : [Item]) -> Void
+    
+}

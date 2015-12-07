@@ -97,6 +97,20 @@ class SearchResultsProxy {
         return profile;
     }
     
+    func ratingScoreForRatingDictionary(ratingDictionary : NSDictionary) -> NSNumber {
+        let ratingAverage = ratingDictionary["average"];
+        if (ratingAverage == nil || ratingAverage!.isKindOfClass(NSNull)){
+            return 0
+        } else {
+            if (ratingAverage!.isKindOfClass(NSNumber)) {
+                return ratingAverage as! NSNumber;
+            }
+            
+            let ratingAverageString = ratingAverage as! String;
+            return numberForString(ratingAverageString)
+        }
+    }
+    
     // MARK - Helper
     
     func numberForString(string : String) -> NSNumber {
@@ -110,15 +124,8 @@ class SearchResultsProxy {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
         return dateFormatter.dateFromString(string)!
     }
-    
-    func ratingScoreForRatingDictionary(ratingDictionary : NSDictionary) -> NSNumber {
-        let ratingAverage = ratingDictionary["average"];
-        if (ratingAverage == nil || ratingAverage!.isKindOfClass(NSNull)){
-            return 0
-        } else {
-            return ratingAverage as! NSNumber
-        }
-    }
+
+    // MARK - Source
     
     func urlToLoad() -> String {
         let sourceString : NSString = obfuscatedURLString();
