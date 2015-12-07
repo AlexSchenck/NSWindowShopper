@@ -10,6 +10,6 @@ import Foundation
 
 protocol NeedsDataFromSearchResults {
 
-    func reloadWithData(items : [Item]) -> Void
+    func reloadWithData(items : [Item]?) -> Void
     
 }

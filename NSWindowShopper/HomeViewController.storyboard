@@ -18,20 +18,6 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnT-a0-zdK">
-                                <rect key="frame" x="58" y="146" width="159" height="30"/>
-                                <state key="normal" title="Navigate To Item Detail"/>
-                                <connections>
-                                    <action selector="handleItemDetailNavigation:" destination="KvN-R2-HKv" eventType="touchUpInside" id="zNA-dH-Gr1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-BQ-3q7">
-                                <rect key="frame" x="40" y="189" width="194" height="30"/>
-                                <state key="normal" title="Navigate To Search Settings"/>
-                                <connections>
-                                    <action selector="handleSearchSettingsNavigation:" destination="KvN-R2-HKv" eventType="touchUpInside" id="dxs-IY-vGq"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1li-oE-G56">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <subviews>
@@ -73,22 +59,104 @@
             <point key="canvasLocation" x="153" y="436"/>
         </scene>
         <!--Item Collection View Controller-->
-        <scene sceneID="Icg-tL-CY5">
+        <scene sceneID="v3d-fo-4l9">
             <objects>
-                <viewController storyboardIdentifier="ItemCollectionViewController" id="nc2-2l-W7n" customClass="ItemCollectionViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eD5-0Y-UKJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="SHx-Gh-O1K"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LAb-u0-NMI" customClass="UICollectionView">
+                <collectionViewController storyboardIdentifier="ItemCollectionViewController" id="Mfm-io-uN1" customClass="ItemCollectionViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="HxU-V4-HMI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J54-1A-liw">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zmB-HO-tTo">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Mfm-io-uN1" id="iTh-6n-0ec"/>
+                            <outlet property="delegate" destination="Mfm-io-uN1" id="NTj-6q-kje"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAE-JT-5Vy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="436"/>
+        </scene>
+        <!--Item List Table View Controller-->
+        <scene sceneID="jdA-wh-Y0M">
+            <objects>
+                <tableViewController storyboardIdentifier="ItemListTableViewController" id="lQb-6F-BXY" customClass="ItemListTableViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UB8-Yc-XxT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f5L-CA-R60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemListTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemListTableViewCell" rowHeight="108" id="6Ge-Iv-ugb" customClass="ItemListTableViewCell" customModule="NSWindowShopper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="108"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Ge-Iv-ugb" id="TvL-ML-dj1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="107.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ihp-8l-GM5">
+                                            <rect key="frame" x="10" y="10" width="88" height="88"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="88" id="GxY-R1-uDJ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwE-wb-PKF">
+                                            <rect key="frame" x="108" y="10" width="474" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipj-vr-AsF">
+                                            <rect key="frame" x="108" y="47" width="474" height="51"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ihp-8l-GM5" secondAttribute="bottom" constant="1.5" id="97Y-jT-XXt"/>
+                                        <constraint firstItem="ipj-vr-AsF" firstAttribute="top" secondItem="rwE-wb-PKF" secondAttribute="bottom" constant="8" id="FqM-4h-c6j"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ipj-vr-AsF" secondAttribute="bottom" constant="1.5" id="JEE-ss-u9Q"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ipj-vr-AsF" secondAttribute="trailing" constant="10" id="P7b-Y9-AgB"/>
+                                        <constraint firstItem="Ihp-8l-GM5" firstAttribute="top" secondItem="TvL-ML-dj1" secondAttribute="topMargin" constant="2" id="Tot-WJ-UVM"/>
+                                        <constraint firstItem="rwE-wb-PKF" firstAttribute="top" secondItem="TvL-ML-dj1" secondAttribute="topMargin" constant="2" id="dGX-DB-Tx0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="rwE-wb-PKF" secondAttribute="trailing" constant="10" id="h5g-os-3v7"/>
+                                        <constraint firstItem="Ihp-8l-GM5" firstAttribute="leading" secondItem="TvL-ML-dj1" secondAttribute="leadingMargin" constant="2" id="uHx-ty-osQ"/>
+                                        <constraint firstItem="rwE-wb-PKF" firstAttribute="leading" secondItem="Ihp-8l-GM5" secondAttribute="trailing" constant="10" id="vgG-bG-pzP"/>
+                                        <constraint firstItem="ipj-vr-AsF" firstAttribute="leading" secondItem="Ihp-8l-GM5" secondAttribute="trailing" constant="10" id="yJY-mG-WXd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionTextView" destination="ipj-vr-AsF" id="bAO-ar-DKe"/>
+                                    <outlet property="itemImageView" destination="Ihp-8l-GM5" id="KPf-oD-plX"/>
+                                    <outlet property="titleLabel" destination="rwE-wb-PKF" id="Y0z-77-m44"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lQb-6F-BXY" id="eKl-70-ITA"/>
+                            <outlet property="delegate" destination="lQb-6F-BXY" id="1G1-uY-DvX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gus-dU-4P8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="436"/>
+            <point key="canvasLocation" x="809" y="-232"/>
         </scene>
         <!--Window Shopper View Controller-->
         <scene sceneID="h3g-9T-Zdj">
@@ -106,25 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAh-Xv-X3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="1103"/>
-        </scene>
-        <!--ItemListController-->
-        <scene sceneID="1Em-rp-2v6">
-            <objects>
-                <viewController storyboardIdentifier="ItemListTableViewController" title="ItemListController" id="r70-sW-NtA" customClass="ItemListTableViewController" customModule="NSWindowShopper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j6C-eI-5Hl"/>
-                        <viewControllerLayoutGuide type="bottom" id="oni-QY-rtY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VKg-Su-wte" customClass="UITableView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yJ4-oK-P36" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="821" y="-238"/>
+            <point key="canvasLocation" x="821" y="1133"/>
         </scene>
     </scenes>
 </document>

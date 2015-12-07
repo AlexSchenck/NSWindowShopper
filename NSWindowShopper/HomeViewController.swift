@@ -25,9 +25,17 @@ class HomeViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
 
+        createNavigationButtons();
         createSubViewControllers();
-        
         loadItems();
+    }
+    
+    func createNavigationButtons() {
+        let filterButton = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleSearchSettingsNavigation:"))
+        self.navigationItem.setRightBarButtonItem(filterButton, animated: false)
+        
+        let reloadButton = UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("loadItems"))
+        self.navigationItem.setLeftBarButtonItem(reloadButton, animated: false)
     }
     
     func createSubViewControllers() {
@@ -76,14 +84,8 @@ class HomeViewController : UIViewController {
            self.childViewControllers[index].view.hidden = index != sender.selectedSegmentIndex
         }
     }
-    @IBAction func handleItemDetailNavigation(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailViewController") as! ItemDetailViewController
-        vc.sampleItem = self.itemsToDisplay![0]
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     
-    @IBAction func handleSearchSettingsNavigation(sender: AnyObject) {
+    func handleSearchSettingsNavigation(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "SearchSettingsViewController", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("SearchSettingsViewController") as! SearchSettingsViewController
         let navController = UINavigationController(rootViewController: vc);
@@ -93,6 +95,9 @@ class HomeViewController : UIViewController {
     // MARK - Network Interactions
     
     func loadItems() {
+        self.itemsToDisplay = nil;
+        self.reloadCurrentViewController()
+        
         weak var weakSelf = self;
         SearchResultsProxy().loadDefaultItemsWithCompletionHandler { (items) -> Void in
             if (weakSelf != nil && items != nil) {
@@ -105,7 +110,7 @@ class HomeViewController : UIViewController {
     func reloadCurrentViewController() {
         for viewController in self.childViewControllers {
             if (viewController is NeedsDataFromSearchResults) {
-                (viewController as! NeedsDataFromSearchResults).reloadWithData(self.itemsToDisplay!);
+                (viewController as! NeedsDataFromSearchResults).reloadWithData(self.itemsToDisplay);
             }
         }
     }

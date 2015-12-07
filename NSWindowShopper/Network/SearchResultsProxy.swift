@@ -65,7 +65,7 @@ class SearchResultsProxy {
         let item = Item();
         item.name = itemDictionary["title"] as! String?;
         item.description = itemDictionary["description"] as! String?;
-        item.imageURL = itemDictionary["get_img_permalink_large"] as! String?;
+        item.imageURL = itemDictionary["get_img_permalink_small"] as! String?;
         item.price = numberForString(itemDictionary["price"] as! String)
         
         item.datePosted = dateForString(itemDictionary["post_date"] as! String);

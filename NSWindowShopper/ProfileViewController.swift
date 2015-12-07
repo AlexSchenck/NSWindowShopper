@@ -20,11 +20,14 @@ class ProfileViewController : UIViewController {
     var testProfile : Profile? //= Profile(displayName: "Harry McDonough", dateJoined: NSDate(), ratingScore: 3.7, ratingCount: 47, avatarURL: "https://graph.facebook.com/1069772458/picture?type=normal&return_ssl_resources=true")
     
     override func viewDidLoad() {
-        if let url = NSURL(string: testProfile!.avatarURL!) {
-            if let data = NSData(contentsOfURL: url) {
-                profileImage.image = UIImage(data: data)
-            }        
+        
+        weak var weakSelf = self;
+        ImageLoader.loadImageAtURL(testProfile!.avatarURL!) { (loadedImage) -> Void in
+            if (weakSelf != nil) {
+                weakSelf!.profileImage.image = loadedImage
+            }
         }
+        
         profileImage.clipsToBounds = true
         
         profileName.text = testProfile!.displayName

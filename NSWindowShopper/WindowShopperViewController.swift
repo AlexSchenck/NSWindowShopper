@@ -17,7 +17,7 @@ class WindowShopperViewController : UIViewController, NeedsDataFromSearchResults
         self.view.translatesAutoresizingMaskIntoConstraints = false;
     }
     
-    func reloadWithData(items: [Item]) {
+    func reloadWithData(items: [Item]?) {
         print("windowshopper shouldReload");
     }
 }

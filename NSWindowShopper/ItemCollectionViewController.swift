@@ -15,9 +15,10 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
         super.viewDidLoad()
         
         self.view.translatesAutoresizingMaskIntoConstraints = false;
+        
     }
     
-    func reloadWithData(items: [Item]) {
+    func reloadWithData(items: [Item]?) {
         print("collection shouldReload");
     }
     
