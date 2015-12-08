@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
-class HomeViewController : UIViewController {
+class HomeViewController : UIViewController, ItemDataProvider, SearchResultsProxyDelegate {
     
     var itemsToDisplay : [Item]?
     var hasAddedConstraints = false
+    var searchResultsProxy : SearchResultsProxy?
     
     var itemListTableViewController : ItemListTableViewController?
     var itemCollectionViewController: ItemCollectionViewController?
     var windowShopperViewController : WindowShopperViewController?
     
     @IBOutlet weak var viewSelector: UISegmentedControl!
+    @IBOutlet weak var loadingOverlay: UIVisualEffectView!
     
     // MARK - View Lifecycle
     
@@ -27,6 +29,8 @@ class HomeViewController : UIViewController {
 
         createNavigationButtons();
         createSubViewControllers();
+        
+        self.searchResultsProxy = SearchResultsProxy(delegate: self)
         loadItems();
     }
     
@@ -34,12 +38,13 @@ class HomeViewController : UIViewController {
         let filterButton = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleSearchSettingsNavigation:"))
         self.navigationItem.setRightBarButtonItem(filterButton, animated: false)
         
-        let reloadButton = UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("loadItems"))
+        let reloadButton = UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("reloadItems"))
         self.navigationItem.setLeftBarButtonItem(reloadButton, animated: false)
     }
     
     func createSubViewControllers() {
         self.itemListTableViewController = storyboard?.instantiateViewControllerWithIdentifier("ItemListTableViewController") as? ItemListTableViewController
+        self.itemListTableViewController!.dataProvder = self;
         
         self.itemCollectionViewController = storyboard?.instantiateViewControllerWithIdentifier("ItemCollectionViewController") as? ItemCollectionViewController
         
@@ -77,6 +82,16 @@ class HomeViewController : UIViewController {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: viewDictionary))
     }
     
+    // MARK - Updating UI
+    
+    func reloadViewControllers() {
+        for viewController in self.childViewControllers {
+            if (viewController is NeedsDataFromSearchResults) {
+                (viewController as! NeedsDataFromSearchResults).reloadWithData(self.itemsToDisplay);
+            }
+        }
+    }
+    
     // MARK - IBAction
 
     @IBAction func segmentedControlChangedValue(sender: UISegmentedControl) {
@@ -95,23 +110,52 @@ class HomeViewController : UIViewController {
     // MARK - Network Interactions
     
     func loadItems() {
-        self.itemsToDisplay = nil;
-        self.reloadCurrentViewController()
+        self.startLoadingAnimations()
         
-        weak var weakSelf = self;
-        SearchResultsProxy().loadDefaultItemsWithCompletionHandler { (items) -> Void in
-            if (weakSelf != nil && items != nil) {
-                weakSelf!.itemsToDisplay = items;
-                weakSelf!.reloadCurrentViewController();
-            }
-        }
+        self.itemsToDisplay = nil;
+        self.searchResultsProxy!.loadItems()
     }
     
-    func reloadCurrentViewController() {
-        for viewController in self.childViewControllers {
-            if (viewController is NeedsDataFromSearchResults) {
-                (viewController as! NeedsDataFromSearchResults).reloadWithData(self.itemsToDisplay);
-            }
-        }
+    func reloadItems() {
+        self.startLoadingAnimations()
+        
+        self.itemsToDisplay = nil;
+        self.searchResultsProxy!.reloadItems()
     }
+    
+    // Mark - ItemDataProvider
+    
+    func loadNextPage() {
+        self.startLoadingAnimations()
+        self.searchResultsProxy!.loadNextPage()
+    }
+    
+    // Mark - SearchResultsProxyDelegate
+    
+    func loadedItems(items : [Item]) {
+        self.itemsToDisplay = items
+        self.reloadViewControllers()
+        self.stopLoadingAnimations()
+    }
+    
+    func failedToLoadItems() {
+        self.itemsToDisplay = nil
+        self.reloadViewControllers()
+        self.stopLoadingAnimations()
+    }
+    
+    // MARK - Animation
+    
+    func startLoadingAnimations() {
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+            self.loadingOverlay.alpha = 1
+            }, completion: nil)
+    }
+    
+    func stopLoadingAnimations() {
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+            self.loadingOverlay.alpha = 0
+            }, completion: nil)
+    }
+    
 }

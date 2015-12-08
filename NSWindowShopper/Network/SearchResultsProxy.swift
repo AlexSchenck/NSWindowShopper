@@ -9,10 +9,30 @@
 import Foundation
 import CoreLocation
 
+protocol SearchResultsProxyDelegate : AnyObject {
+    
+    func loadedItems(items : [Item]);
+    func failedToLoadItems();
+    
+}
+
 class SearchResultsProxy {
     
-    func loadDefaultItemsWithCompletionHandler(completionHandler: (items: [Item]?) -> Void) {
-        let urlToLoad = NSURL(string: "https://\(self.urlToLoad())");
+    private weak var delegate : SearchResultsProxyDelegate?
+    private var loadedItems : [Item]?
+    private var pageNumber : Int = 0
+    
+    // MARK - Lifecycle
+    
+    init(delegate: SearchResultsProxyDelegate) {
+        self.delegate = delegate;
+    }
+    
+    // MARK - Network Interface
+    
+    func loadItems() {
+        let urlToLoad = NSURL(string: "https://\(self.urlToLoad())/?page=\(self.pageNumber)");
+        print(urlToLoad)
         if (urlToLoad == nil) {
             return;
         }
@@ -22,20 +42,52 @@ class SearchResultsProxy {
         
         let task = urlSession.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if (error != nil) {
-                    completionHandler(items: nil);
+                if (error != nil || data == nil) {
+                    self.notifyDelegateOfFailure()
                 } else {
-                    if (data == nil) {
-                        completionHandler(items: nil);
+                    let parsedItemData : [Item]? = self.parseJsonData(data!);
+                    if (parsedItemData == nil) {
+                        self.notifyDelegateOfFailure()
                     } else {
-                        let parsedItemData : [Item]? = self.parseJsonData(data!);
-                        completionHandler(items: parsedItemData);
+                        if (self.loadedItems == nil) {
+                            self.loadedItems = parsedItemData!
+                        } else {
+                            self.loadedItems!.appendContentsOf(parsedItemData!)
+                        }
+                        self.notifyDelegateOfLoadedItems()
                     }
                 }
             })
         }
         task.resume()
     }
+    
+    func loadNextPage() {
+        self.pageNumber++
+        self.loadItems()
+    }
+    
+    func reloadItems() {
+        self.loadedItems = nil
+        self.pageNumber = 0
+        self.loadItems()
+    }
+    
+    // MARK - Delegate Interface
+    
+    func notifyDelegateOfFailure() {
+        if(self.delegate != nil) {
+            self.delegate!.failedToLoadItems()
+        }
+    }
+    
+    func notifyDelegateOfLoadedItems() {
+        if(self.delegate != nil) {
+            self.delegate!.loadedItems(self.loadedItems!)
+        }
+    }
+    
+    // Mark - JSON Parsing
     
     func parseJsonData(jsonData : NSData) -> [Item]? {
         do {

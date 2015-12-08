@@ -46,16 +46,38 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSB-Ez-N4m">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="z0S-SH-Tc4">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="u6D-G1-So3">
+                                            <rect key="frame" x="282" y="227" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="u6D-G1-So3" firstAttribute="centerX" secondItem="z0S-SH-Tc4" secondAttribute="centerX" id="Spf-pO-Bxp"/>
+                                        <constraint firstItem="u6D-G1-So3" firstAttribute="centerY" secondItem="z0S-SH-Tc4" secondAttribute="centerY" id="TIV-xg-0yR"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="0.61456266534391535" green="0.61456266534391535" blue="0.61456266534391535" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.41999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dg9-kt-T6z" firstAttribute="top" secondItem="lA9-PY-XvB" secondAttribute="bottom" id="9DR-A3-PcT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dg9-kt-T6z" secondAttribute="trailing" constant="-20" id="9g3-DP-ZKc"/>
+                            <constraint firstItem="zSB-Ez-N4m" firstAttribute="leading" secondItem="Akb-od-cKa" secondAttribute="leadingMargin" constant="-20" id="IBo-Kv-WqG"/>
                             <constraint firstItem="dg9-kt-T6z" firstAttribute="leading" secondItem="Akb-od-cKa" secondAttribute="leadingMargin" constant="-20" id="WFo-4n-dHJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zSB-Ez-N4m" secondAttribute="trailing" constant="-20" id="YaH-AH-jOa"/>
+                            <constraint firstItem="zSB-Ez-N4m" firstAttribute="top" secondItem="dg9-kt-T6z" secondAttribute="bottom" id="e98-5e-VcU"/>
+                            <constraint firstItem="sMd-4b-2tD" firstAttribute="top" secondItem="zSB-Ez-N4m" secondAttribute="bottom" id="hfI-Nz-rXD"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="loadingOverlay" destination="zSB-Ez-N4m" id="7y1-wL-Fk5"/>
                         <outlet property="viewSelector" destination="NNk-4A-5y1" id="HcV-gq-vdP"/>
                     </connections>
                 </viewController>
@@ -186,6 +208,27 @@
                                     <outlet property="titleLabel" destination="rwE-wb-PKF" id="Y0z-77-m44"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LoadMoreTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadMoreTableViewCell" rowHeight="44" id="PLQ-cd-zqs">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLQ-cd-zqs" id="eCb-4A-xhZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load More Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taQ-1I-3gI">
+                                            <rect key="frame" x="236" y="11" width="128" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="taQ-1I-3gI" firstAttribute="centerY" secondItem="eCb-4A-xhZ" secondAttribute="centerY" id="84y-99-Xs3"/>
+                                        <constraint firstItem="taQ-1I-3gI" firstAttribute="centerX" secondItem="eCb-4A-xhZ" secondAttribute="centerX" id="mTn-b7-CqQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.69000000000000006" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="lQb-6F-BXY" id="eKl-70-ITA"/>
@@ -195,7 +238,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gus-dU-4P8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-232"/>
+            <point key="canvasLocation" x="645" y="-251"/>
         </scene>
         <!--Window Shopper View Controller-->
         <scene sceneID="h3g-9T-Zdj">

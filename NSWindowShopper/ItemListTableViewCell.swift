@@ -19,7 +19,6 @@ class ItemListTableViewCell : UITableViewCell {
     var hasConfiguredStaticUI : Bool = false
     
     func configureWithItem(item : Item) {
-
         if (!hasConfiguredStaticUI) {
             self.itemImageView.layer.cornerRadius = 3.0;
             self.itemImageView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
