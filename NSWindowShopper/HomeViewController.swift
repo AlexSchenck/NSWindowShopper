@@ -47,7 +47,9 @@ class HomeViewController : UIViewController {
         
         self.addChildViewController(self.itemListTableViewController!)
         self.addChildViewController(self.itemCollectionViewController!)
+        self.itemCollectionViewController!.view.hidden = true
         self.addChildViewController(self.windowShopperViewController!)
+        self.windowShopperViewController!.view.hidden = true
     }
     
     override func addChildViewController(childController: UIViewController) {
@@ -69,12 +71,10 @@ class HomeViewController : UIViewController {
     }
     
     func addConstraintsToViewController(viewController : UIViewController) {
-        let metricsDictionary = ["heightOffset" : 110]
         let viewDictionary = ["view" : viewController.view]
         
-        
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: viewDictionary))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(heightOffset)-[view]|", options: NSLayoutFormatOptions.AlignAllTop, metrics: metricsDictionary, views: viewDictionary))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: viewDictionary))
     }
     
     // MARK - IBAction

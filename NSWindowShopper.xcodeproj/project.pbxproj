@@ -72,8 +72,8 @@
 		4E30A63B1C151672001540CF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9DFDE2F01C0E9305007DFE93 /* HomeViewController.swift */,
 				9DFDE2EE1C0E92EA007DFE93 /* HomeViewController.storyboard */,
+				9DFDE2F01C0E9305007DFE93 /* HomeViewController.swift */,
 				4E30A6401C1520CE001540CF /* ItemCollectionViewController.swift */,
 				4E30A63C1C151990001540CF /* ItemListTableViewController.swift */,
 				4E6589411C154C20009ADAE6 /* ItemListTableViewCell.swift */,
