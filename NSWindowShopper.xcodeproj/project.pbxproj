@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		304E1A031C15328E00EF0A7A /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E1A021C15328E00EF0A7A /* CosmosDistrib.swift */; };
 		4E83F5BB1C11101700060CEC /* SearchResultsProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83F5BA1C11101700060CEC /* SearchResultsProxy.swift */; };
 		9DFDE2DD1C0E9294007DFE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */; };
 		9DFDE2E41C0E9294007DFE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		304E1A021C15328E00EF0A7A /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		4E83F5BA1C11101700060CEC /* SearchResultsProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsProxy.swift; path = Network/SearchResultsProxy.swift; sourceTree = "<group>"; };
 		9DFDE2D91C0E9294007DFE93 /* NSWindowShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSWindowShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				9DFDE3001C0E99CD007DFE93 /* Item.swift */,
 				9DFDE3021C0E99E0007DFE93 /* Profile.swift */,
+				304E1A021C15328E00EF0A7A /* CosmosDistrib.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				4E83F5BB1C11101700060CEC /* SearchResultsProxy.swift in Sources */,
 				9DFDE2F91C0E95AE007DFE93 /* ProfileViewController.swift in Sources */,
 				9DFDE3031C0E99E0007DFE93 /* Profile.swift in Sources */,
+				304E1A031C15328E00EF0A7A /* CosmosDistrib.swift in Sources */,
 				9DFDE2F31C0E951D007DFE93 /* ItemDetailViewController.swift in Sources */,
 				9DFDE3011C0E99CD007DFE93 /* Item.swift in Sources */,
 				9DFDE2FB1C0E9676007DFE93 /* SearchSettingsViewController.swift in Sources */,

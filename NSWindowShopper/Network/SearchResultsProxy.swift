@@ -116,8 +116,6 @@ class SearchResultsProxy {
         if (ratingAverage == nil || ratingAverage!.isKindOfClass(NSNull)){
             return 0
         } else {
-            //let ratingAverageString = ratingAverage as! String;
-            //return numberForString(ratingAverageString)
             return ratingAverage as! NSNumber
         }
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -18,57 +18,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Since" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-UZ-aen">
-                                <rect key="frame" x="245" y="316" width="111" height="21"/>
+                                <rect key="frame" x="245" y="316" width="110.5" height="20.5"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xC5-YZ-YAU">
-                                <rect key="frame" x="278" y="275" width="45" height="21"/>
+                                <rect key="frame" x="278" y="275" width="45" height="20.5"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-vC-z9G">
-                                <rect key="frame" x="163" y="466" width="275" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="275" id="gMV-H2-hRF"/>
-                                </constraints>
-                            </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSe-aW-2am">
-                                <rect key="frame" x="276" y="415" width="49" height="21"/>
+                                <rect key="frame" x="276" y="415" width="49" height="20.5"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AcM-uC-oBb">
                                 <rect key="frame" x="225" y="83" width="150" height="150"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="nxq-lY-gRK"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-KK-pEu" customClass="CosmosView" customModule="NSWindowShopper" customModuleProvider="target">
+                                <rect key="frame" x="248" y="517" width="120" height="20"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ijd-UZ-aen" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="1EV-g6-OQg"/>
                             <constraint firstItem="RSe-aW-2am" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="4so-Hn-oWx"/>
+                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="3vz-KK-pEu" secondAttribute="bottom" constant="63" id="Dz7-Pu-22Q"/>
                             <constraint firstItem="AcM-uC-oBb" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="63" id="EEF-jl-8m6"/>
                             <constraint firstItem="ijd-UZ-aen" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="296" id="HRS-xM-wkv"/>
                             <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="255" id="Mz4-0W-QAO"/>
                             <constraint firstItem="AcM-uC-oBb" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="NAN-QP-y4W"/>
-                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="6YH-vC-z9G" secondAttribute="bottom" constant="132" id="P3h-br-Op5"/>
                             <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="RSe-aW-2am" secondAttribute="bottom" constant="164" id="Rs7-Pn-CMT"/>
+                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="3vz-KK-pEu" secondAttribute="bottom" constant="63" id="bca-r2-Gie"/>
                             <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="AcM-uC-oBb" secondAttribute="bottom" constant="42" id="diD-4P-B85"/>
-                            <constraint firstItem="6YH-vC-z9G" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="mMt-zX-pYN"/>
+                            <constraint firstItem="3vz-KK-pEu" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" constant="8" id="gCJ-Qe-oef"/>
                             <constraint firstItem="xC5-YZ-YAU" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="uZg-EU-dtV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bca-r2-Gie"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="profileImage" destination="AcM-uC-oBb" id="uVH-5j-bQW"/>
                         <outlet property="profileMemberSince" destination="ijd-UZ-aen" id="7yv-Bu-4MC"/>
                         <outlet property="profileName" destination="xC5-YZ-YAU" id="BCU-LI-xzo"/>
                         <outlet property="profileRating" destination="RSe-aW-2am" id="pTb-bS-ifY"/>
-                        <outlet property="profileRatingBar" destination="6YH-vC-z9G" id="Nn9-OK-hc8"/>
+                        <outlet property="ratingStar" destination="3vz-KK-pEu" id="6Hq-os-JHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh5-fE-SI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
