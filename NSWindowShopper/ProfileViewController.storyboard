@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -17,25 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Since" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-UZ-aen">
-                                <rect key="frame" x="245" y="316" width="110.5" height="20.5"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xC5-YZ-YAU">
                                 <rect key="frame" x="278" y="275" width="45" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-KK-pEu" customClass="CosmosView" customModule="NSWindowShopper" customModuleProvider="target">
+                                <rect key="frame" x="240" y="508" width="120" height="20"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSe-aW-2am">
                                 <rect key="frame" x="276" y="415" width="49" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AcM-uC-oBb">
@@ -45,26 +43,46 @@
                                     <constraint firstAttribute="width" constant="150" id="nxq-lY-gRK"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-KK-pEu" customClass="CosmosView" customModule="NSWindowShopper" customModuleProvider="target">
-                                <rect key="frame" x="248" y="517" width="120" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Since" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-UZ-aen">
+                                <rect key="frame" x="245" y="316" width="110.5" height="20.5"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ijd-UZ-aen" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="1EV-g6-OQg"/>
                             <constraint firstItem="RSe-aW-2am" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="4so-Hn-oWx"/>
-                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="3vz-KK-pEu" secondAttribute="bottom" constant="63" id="Dz7-Pu-22Q"/>
-                            <constraint firstItem="AcM-uC-oBb" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="63" id="EEF-jl-8m6"/>
-                            <constraint firstItem="ijd-UZ-aen" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="296" id="HRS-xM-wkv"/>
-                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="255" id="Mz4-0W-QAO"/>
+                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="3vz-KK-pEu" secondAttribute="bottom" constant="72" id="Dz7-Pu-22Q">
+                                <variation key="heightClass=compact" constant="20"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="AcM-uC-oBb" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="63" id="EEF-jl-8m6">
+                                <variation key="heightClass=compact" constant="29"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="ijd-UZ-aen" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="296" id="HRS-xM-wkv">
+                                <variation key="heightClass=compact" constant="222"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="216"/>
+                            </constraint>
+                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="LHW-3g-akJ" secondAttribute="bottom" constant="255" id="Mz4-0W-QAO">
+                                <variation key="heightClass=compact" constant="187"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="188"/>
+                            </constraint>
                             <constraint firstItem="AcM-uC-oBb" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="NAN-QP-y4W"/>
-                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="RSe-aW-2am" secondAttribute="bottom" constant="164" id="Rs7-Pn-CMT"/>
+                            <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="RSe-aW-2am" secondAttribute="bottom" constant="164" id="Rs7-Pn-CMT">
+                                <variation key="heightClass=compact" constant="58.5"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="36.5"/>
+                            </constraint>
                             <constraint firstItem="rqN-Ae-5av" firstAttribute="top" secondItem="3vz-KK-pEu" secondAttribute="bottom" constant="63" id="bca-r2-Gie"/>
-                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="AcM-uC-oBb" secondAttribute="bottom" constant="42" id="diD-4P-B85"/>
-                            <constraint firstItem="3vz-KK-pEu" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" constant="8" id="gCJ-Qe-oef"/>
+                            <constraint firstItem="xC5-YZ-YAU" firstAttribute="top" secondItem="AcM-uC-oBb" secondAttribute="bottom" constant="42" id="diD-4P-B85">
+                                <variation key="heightClass=compact" constant="8"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="3vz-KK-pEu" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="gCJ-Qe-oef"/>
                             <constraint firstItem="xC5-YZ-YAU" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="uZg-EU-dtV"/>
                         </constraints>
                         <variation key="default">

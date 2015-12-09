@@ -39,5 +39,7 @@ class ProfileViewController : UIViewController {
         ratingStar.rating = Double((testProfile?.ratingScore)!)
         ratingStar.settings.fillMode = .Precise
         profileRating.text = String(Double((testProfile?.ratingScore)!)) + " stars across " + String(testProfile!.ratingCount!) + " reviews"
+        
+        self.title = testProfile!.displayName
     }
 }
