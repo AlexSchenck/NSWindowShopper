@@ -47,6 +47,7 @@ class HomeViewController : UIViewController, ItemDataProvider, SearchResultsProx
         self.itemListTableViewController!.dataProvder = self;
         
         self.itemCollectionViewController = storyboard?.instantiateViewControllerWithIdentifier("ItemCollectionViewController") as? ItemCollectionViewController
+        self.itemCollectionViewController!.dataProvder = self;
         
         self.windowShopperViewController = storyboard?.instantiateViewControllerWithIdentifier("WindowShopperViewController") as? WindowShopperViewController
         

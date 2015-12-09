@@ -20,7 +20,7 @@ class SearchResultsProxy {
     
     private weak var delegate : SearchResultsProxyDelegate?
     private var loadedItems : [Item]?
-    private var pageNumber : Int = 0
+    private var pageNumber : Int = 1
     
     // MARK - Lifecycle
     

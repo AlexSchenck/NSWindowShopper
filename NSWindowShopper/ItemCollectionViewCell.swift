@@ -1,29 +1,30 @@
 //
-//  ItemListTableViewCell.swift
+//  ItemCollectionViewCell.swift
 //  NSWindowShopper
 //
-//  Created by Jacob Alewel on 12/6/15.
+//  Created by Jacob Alewel on 12/8/15.
 //  Copyright © 2015 iGuest. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ItemListTableViewCell : UITableViewCell {
+class ItemCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
     
     var mostRecentlyLoadedImageURL : String?
     var hasConfiguredStaticUI : Bool = false
     
     func configureWithItem(item : Item) {
         if (!hasConfiguredStaticUI) {
-            self.itemImageView.layer.cornerRadius = 3.0;
-            self.itemImageView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
-            self.itemImageView.layer.borderWidth = 2
+            self.contentView.layer.cornerRadius = 3.0;
+            self.contentView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
+            self.contentView.layer.borderWidth = 2
+            self.contentView.clipsToBounds = true;
+            
             self.itemImageView.clipsToBounds = true;
             
             self.itemImageView.contentMode = UIViewContentMode.ScaleAspectFill
@@ -47,12 +48,6 @@ class ItemListTableViewCell : UITableViewCell {
         } else {
             self.priceLabel.text = "$\(String(format: "%.2f", item.price!.doubleValue))"
         }
-    
-        // Really boot hack to fix textview bug
-        // http://stackoverflow.com/questions/19049917/uitextview-font-is-being-reset-after-settext
-        self.descriptionTextView.selectable = true;
-        self.descriptionTextView.text = item.description;
-        self.descriptionTextView.selectable = false;
     }
     
     override func prepareForReuse() {
@@ -82,4 +77,5 @@ class ItemListTableViewCell : UITableViewCell {
         
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
+    
 }

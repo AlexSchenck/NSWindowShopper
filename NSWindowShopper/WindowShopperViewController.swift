@@ -15,9 +15,11 @@ class WindowShopperViewController : UIViewController, NeedsDataFromSearchResults
         super.viewDidLoad()
         
         self.view.translatesAutoresizingMaskIntoConstraints = false;
+        self.view.backgroundColor = UIColor.clearColor()
     }
     
     func reloadWithData(items: [Item]?) {
         print("windowshopper shouldReload");
     }
+    
 }

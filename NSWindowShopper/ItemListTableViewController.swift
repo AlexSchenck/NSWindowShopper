@@ -25,6 +25,30 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
         
         self.tableView.separatorColor = UIColor.whiteColor()
         self.tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deviceOrientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
+            self.tableView.contentInset.top = 88
+        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
+            self.tableView.contentInset.top = 108
+        }
+        
+        super.viewWillLayoutSubviews()
+    }
+    
+    func deviceOrientationDidChange() {
+        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
+            self.tableView.contentInset.top = 88
+        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
+            self.tableView.contentInset.top = 108
+            
+            if(self.tableView.contentOffset.y == -88) {
+                self.tableView.contentOffset.y = -108
+            }
+        }
     }
     
     // MARK - NeedsDataFromSearchResults
@@ -54,17 +78,13 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row < self.items!.count) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("ItemListTableViewCell");
-            if let itemCell = cell as? ItemListTableViewCell {
-                itemCell.configureWithItem(self.items![indexPath.row])
-                return itemCell;
-            }
+            let cell = tableView.dequeueReusableCellWithIdentifier("ItemListTableViewCell") as! ItemListTableViewCell;
+            cell.configureWithItem(self.items![indexPath.row])
+            return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("LoadMoreTableViewCell");
            return cell!
         }
-        
-        return UITableViewCell();
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

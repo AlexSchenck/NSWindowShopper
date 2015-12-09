@@ -24,7 +24,7 @@ class ItemDetailViewController : UIViewController {
     override func viewDidLoad() {
         
         weak var weakSelf = self;
-        ImageLoader.loadImageAtURL(item!.imageURL!) { (loadedImage) -> Void in
+        ImageLoader.loadImageAtURL(item!.imageURL!) { (loadedImage, _) -> Void in
             if (weakSelf != nil) {
                 weakSelf!.ItemImage.image = loadedImage
             }

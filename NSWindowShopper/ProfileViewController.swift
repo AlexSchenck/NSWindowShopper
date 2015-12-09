@@ -22,7 +22,7 @@ class ProfileViewController : UIViewController {
     override func viewDidLoad() {
         
         weak var weakSelf = self;
-        ImageLoader.loadImageAtURL(testProfile!.avatarURL!) { (loadedImage) -> Void in
+        ImageLoader.loadImageAtURL(testProfile!.avatarURL!) { (loadedImage, _) -> Void in
             if (weakSelf != nil) {
                 weakSelf!.profileImage.image = loadedImage
             }
