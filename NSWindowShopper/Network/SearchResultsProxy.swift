@@ -9,10 +9,30 @@
 import Foundation
 import CoreLocation
 
+protocol SearchResultsProxyDelegate : AnyObject {
+    
+    func loadedItems(items : [Item]);
+    func failedToLoadItems();
+    
+}
+
 class SearchResultsProxy {
     
-    func loadDefaultItemsWithCompletionHandler(completionHandler: (items: [Item]?) -> Void) {
-        let urlToLoad = NSURL(string: "https://\(self.urlToLoad())");
+    private weak var delegate : SearchResultsProxyDelegate?
+    private var loadedItems : [Item]?
+    private var pageNumber : Int = 0
+    
+    // MARK - Lifecycle
+    
+    init(delegate: SearchResultsProxyDelegate) {
+        self.delegate = delegate;
+    }
+    
+    // MARK - Network Interface
+    
+    func loadItems() {
+        let urlToLoad = NSURL(string: "https://\(self.urlToLoad())/?page=\(self.pageNumber)");
+        print(urlToLoad)
         if (urlToLoad == nil) {
             return;
         }
@@ -22,20 +42,52 @@ class SearchResultsProxy {
         
         let task = urlSession.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if (error != nil) {
-                    completionHandler(items: nil);
+                if (error != nil || data == nil) {
+                    self.notifyDelegateOfFailure()
                 } else {
-                    if (data == nil) {
-                        completionHandler(items: nil);
+                    let parsedItemData : [Item]? = self.parseJsonData(data!);
+                    if (parsedItemData == nil) {
+                        self.notifyDelegateOfFailure()
                     } else {
-                        let parsedItemData : [Item]? = self.parseJsonData(data!);
-                        completionHandler(items: parsedItemData);
+                        if (self.loadedItems == nil) {
+                            self.loadedItems = parsedItemData!
+                        } else {
+                            self.loadedItems!.appendContentsOf(parsedItemData!)
+                        }
+                        self.notifyDelegateOfLoadedItems()
                     }
                 }
             })
         }
         task.resume()
     }
+    
+    func loadNextPage() {
+        self.pageNumber++
+        self.loadItems()
+    }
+    
+    func reloadItems() {
+        self.loadedItems = nil
+        self.pageNumber = 0
+        self.loadItems()
+    }
+    
+    // MARK - Delegate Interface
+    
+    func notifyDelegateOfFailure() {
+        if(self.delegate != nil) {
+            self.delegate!.failedToLoadItems()
+        }
+    }
+    
+    func notifyDelegateOfLoadedItems() {
+        if(self.delegate != nil) {
+            self.delegate!.loadedItems(self.loadedItems!)
+        }
+    }
+    
+    // Mark - JSON Parsing
     
     func parseJsonData(jsonData : NSData) -> [Item]? {
         do {
@@ -65,7 +117,7 @@ class SearchResultsProxy {
         let item = Item();
         item.name = itemDictionary["title"] as! String?;
         item.description = itemDictionary["description"] as! String?;
-        item.imageURL = itemDictionary["get_img_permalink_large"] as! String?;
+        item.imageURL = itemDictionary["get_img_permalink_small"] as! String?;
         item.price = numberForString(itemDictionary["price"] as! String)
         
         item.datePosted = dateForString(itemDictionary["post_date"] as! String);
@@ -97,6 +149,20 @@ class SearchResultsProxy {
         return profile;
     }
     
+    func ratingScoreForRatingDictionary(ratingDictionary : NSDictionary) -> NSNumber {
+        let ratingAverage = ratingDictionary["average"];
+        if (ratingAverage == nil || ratingAverage!.isKindOfClass(NSNull)){
+            return 0
+        } else {
+            if (ratingAverage!.isKindOfClass(NSNumber)) {
+                return ratingAverage as! NSNumber;
+            }
+            
+            let ratingAverageString = ratingAverage as! String;
+            return numberForString(ratingAverageString)
+        }
+    }
+    
     // MARK - Helper
     
     func numberForString(string : String) -> NSNumber {
@@ -110,18 +176,8 @@ class SearchResultsProxy {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
         return dateFormatter.dateFromString(string)!
     }
-    
-    func ratingScoreForRatingDictionary(ratingDictionary : NSDictionary) -> NSNumber {
-        let ratingAverage = ratingDictionary["average"];
-        if (ratingAverage == nil || ratingAverage!.isKindOfClass(NSNull)){
-            return 0
-        } else {
-            //let ratingAverageString = ratingAverage as! String;
-            //return numberForString(ratingAverageString)
-            return ratingAverage as! NSNumber
-        }
-    }
-    
+
+    // MARK - Source
     func urlToLoad() -> String {
         let sourceString : NSString = obfuscatedURLString();
         let modifiedString = NSMutableString();
