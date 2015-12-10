@@ -19,22 +19,13 @@ class Item {
     var locationName : String?
     var datePosted : NSDate?
     var imageURL : String?
- 
-    init(profile : Profile, name : String, description : String,
-        price : NSNumber, location : CLLocation, locationName : String,
-        datePosted : NSDate, imageURL : String) {
-        
-        self.profile = profile
-        self.name = name
-        self.description = description
-        self.price = price
-        self.location = location
-        self.locationName = locationName
-        self.datePosted = datePosted
-        self.imageURL = imageURL
+    
+    func formattedPriceText() -> String {
+        if (self.price!.doubleValue % 1 == 0) {
+            return "$\(self.price!.integerValue)"
+        } else {
+            return "$\(String(format: "%.2f", self.price!.doubleValue))"
+        }
     }
     
-    init() {
-        
-    }
 }
