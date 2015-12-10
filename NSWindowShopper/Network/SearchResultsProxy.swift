@@ -178,7 +178,6 @@ class SearchResultsProxy {
     }
 
     // MARK - Source
-    
     func urlToLoad() -> String {
         let sourceString : NSString = obfuscatedURLString();
         let modifiedString = NSMutableString();
