@@ -69,7 +69,7 @@ class SearchResultsProxy {
     
     func reloadItems() {
         self.loadedItems = nil
-        self.pageNumber = 0
+        self.pageNumber = 1
         self.loadItems()
     }
     
