@@ -11,20 +11,22 @@ import UIKit
 
 class ColorProvider {
     
-    static let blueComponent : CGFloat = ColorProvider.randomColorGenerator() / 1.25
+    // MARK - Static Colors
     
-    static func randomColorGenerator() -> CGFloat {
-        var randomColorComponent : CGFloat = 0
-        while (randomColorComponent < 0.25 || randomColorComponent > 0.75) {
-            randomColorComponent = CGFloat(arc4random() % 256 ) / 256
-        }
-        return randomColorComponent
-    }
+    static let darkBorderColor = UIColor(white: 0.2, alpha: 1.0)
+    static let whiteColor = UIColor(white: 0.9, alpha: 1.0)
+    
+    // MARK - Item List Background Colors
+    
+    private static var blueComponent : CGFloat = ColorProvider.randomColorGenerator() / 1.25
+    
+    private static var indicesPerCycle : Double = Double(arc4random() % 5) + 20.0
+    private static var indexOffset : Int = Int(arc4random() % 10)
     
     static func colorForItemPosition(itemPosition : Int) -> UIColor {
         
         var red: CGFloat = 0
-        var green: CGFloat = CGFloat(abs(sin(Double(itemPosition) * M_PI / 10.0))) / 1.75
+        var green: CGFloat = CGFloat(abs(sin(Double(itemPosition + ColorProvider.indexOffset) * M_PI / ColorProvider.indicesPerCycle))) / 1.75
         var blue: CGFloat = blueComponent
         
         // Mix the color
@@ -39,6 +41,22 @@ class ColorProvider {
         }
         
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
+    static func reset() {
+        ColorProvider.blueComponent = ColorProvider.randomColorGenerator() / 1.25
+        ColorProvider.indicesPerCycle = Double(arc4random() % 5) + 10.0
+        ColorProvider.indexOffset = Int(arc4random() % 10)
+    }
+    
+    // MARK - Private Helper
+    
+    private static func randomColorGenerator() -> CGFloat {
+        var randomColorComponent : CGFloat = 0
+        while (randomColorComponent < 0.25 || randomColorComponent > 0.75) {
+            randomColorComponent = CGFloat(arc4random() % 256 ) / 256
+        }
+        return randomColorComponent
     }
     
 }

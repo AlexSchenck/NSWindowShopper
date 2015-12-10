@@ -19,41 +19,49 @@ class ItemListTableViewCell : UITableViewCell {
     var mostRecentlyLoadedImageURL : String?
     var hasConfiguredStaticUI : Bool = false
     
+    // MARK - UI Configuration
+    
     func configureWithItem(item : Item) {
+        firstTimeUISetupIfNeeded()
+        
+        self.loadItemImage(item.imageURL!)
+        self.titleLabel.text = item.name;
+        self.priceLabel.text = item.formattedPriceText()
+        self.setDescriptionText(item.description)
+    }
+    
+    private func firstTimeUISetupIfNeeded() {
         if (!hasConfiguredStaticUI) {
             self.itemImageView.layer.cornerRadius = 3.0;
-            self.itemImageView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
+            self.itemImageView.layer.borderColor = ColorProvider.darkBorderColor.CGColor
             self.itemImageView.layer.borderWidth = 2
             self.itemImageView.clipsToBounds = true;
             
             self.itemImageView.contentMode = UIViewContentMode.ScaleAspectFill
             hasConfiguredStaticUI = true
         }
+    }
+    
+    private func loadItemImage(imageURL : String) {
+        self.mostRecentlyLoadedImageURL = imageURL
         
-        //self.contentView.backgroundColor = generateRandomPastelColor(withMixedColor: UIColor.grayColor())
-        
-        self.mostRecentlyLoadedImageURL = item.imageURL!
         weak var weakSelf = self;
-        ImageLoader.loadImageAtURL(item.imageURL!) { (loadedImage, loadedImageURL) -> Void in
+        ImageLoader.loadImageAtURL(imageURL) { (loadedImage, loadedImageURL) -> Void in
             if (weakSelf != nil && weakSelf!.mostRecentlyLoadedImageURL == loadedImageURL) {
                 weakSelf!.itemImageView.image = loadedImage
             }
         }
-        
-        self.titleLabel.text = item.name;
-        
-        if (item.price!.doubleValue % 1 == 0) {
-            self.priceLabel.text = "$\(item.price!.integerValue)"
-        } else {
-            self.priceLabel.text = "$\(String(format: "%.2f", item.price!.doubleValue))"
-        }
+    }
     
+    private func setDescriptionText(descriptionText : String?) {
         // Really boot hack to fix textview bug
         // http://stackoverflow.com/questions/19049917/uitextview-font-is-being-reset-after-settext
         self.descriptionTextView.selectable = true;
-        self.descriptionTextView.text = item.description;
+        self.descriptionTextView.text = descriptionText;
         self.descriptionTextView.selectable = false;
     }
+    
+    // MARK - Cell Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()

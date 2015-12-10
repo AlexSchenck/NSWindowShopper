@@ -120,6 +120,7 @@ class HomeViewController : UIViewController, ItemDataProvider, SearchResultsProx
     func reloadItems() {
         self.startLoadingAnimations()
         
+        ColorProvider.reset()
         self.itemsToDisplay = nil;
         self.searchResultsProxy!.reloadItems()
     }

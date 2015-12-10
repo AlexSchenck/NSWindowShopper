@@ -23,7 +23,7 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
         self.view.clipsToBounds = true;
         self.view.backgroundColor = UIColor.clearColor()
         
-        self.tableView.separatorColor = UIColor.whiteColor()
+        self.tableView.separatorColor = ColorProvider.whiteColor
         self.tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "deviceOrientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
@@ -80,7 +80,7 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
         if (indexPath.row < self.items!.count) {
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemListTableViewCell") as! ItemListTableViewCell;
             cell.configureWithItem(self.items![indexPath.row])
-            cell.contentView.backgroundColor = ColorProvider.colorForItemPosition(indexPath.row)
+            cell.backgroundColor = ColorProvider.colorForItemPosition(indexPath.row)
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("LoadMoreTableViewCell");

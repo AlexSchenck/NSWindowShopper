@@ -85,7 +85,6 @@
 				4E30A63C1C151990001540CF /* ItemListTableViewController.swift */,
 				4E6589411C154C20009ADAE6 /* ItemListTableViewCell.swift */,
 				4E30A6421C15252A001540CF /* WindowShopperViewController.swift */,
-				4EDCF6051C19ED1F0073A045 /* ColorProvider.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -143,6 +142,7 @@
 		9DFDE2FE1C0E99B1007DFE93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EDCF6051C19ED1F0073A045 /* ColorProvider.swift */,
 				4E30A63B1C151672001540CF /* Home */,
 				9DFDE2F21C0E951D007DFE93 /* ItemDetailViewController.swift */,
 				9DFDE2F41C0E9535007DFE93 /* ItemDetailViewController.storyboard */,
