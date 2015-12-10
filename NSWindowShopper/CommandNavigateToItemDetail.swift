@@ -11,11 +11,12 @@ import UIKit
 
 class CommandNavigateToItemDetail {
     
-    static func executeWithNavigationController(navigationController : UINavigationController, andItem itemToNavigateTo : Item) {
+    static func executeWithNavigationController(navigationController : UINavigationController, withItem itemToNavigateTo : Item, andColor backgroundColor : UIColor) {
         
         let storyboard = UIStoryboard(name: "ItemDetailViewController", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("ItemDetailViewController") as! ItemDetailViewController
         vc.item = itemToNavigateTo
+        vc.view.backgroundColor = backgroundColor
         navigationController.pushViewController(vc, animated: true)
         
     }

@@ -86,6 +86,7 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
         if (indexPath.item < self.items!.count) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCollectionViewCell", forIndexPath: indexPath) as! ItemCollectionViewCell
             cell.configureWithItem(self.items![indexPath.item])
+            cell.contentView.backgroundColor = ColorProvider.colorForItemPosition(indexPath.item)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LoadMoreCollectionViewCell", forIndexPath: indexPath)
@@ -99,7 +100,7 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         
         if (indexPath.row < self.items!.count) {
-            CommandNavigateToItemDetail.executeWithNavigationController(self.navigationController!, andItem: self.items![indexPath.row])
+            CommandNavigateToItemDetail.executeWithNavigationController(self.navigationController!, withItem: self.items![indexPath.row], andColor: ColorProvider.colorForItemPosition(indexPath.item))
         } else {
             self.dataProvder?.loadNextPage()
         }

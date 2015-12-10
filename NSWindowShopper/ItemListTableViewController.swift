@@ -80,6 +80,7 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
         if (indexPath.row < self.items!.count) {
             let cell = tableView.dequeueReusableCellWithIdentifier("ItemListTableViewCell") as! ItemListTableViewCell;
             cell.configureWithItem(self.items![indexPath.row])
+            cell.contentView.backgroundColor = ColorProvider.colorForItemPosition(indexPath.row)
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("LoadMoreTableViewCell");
@@ -91,7 +92,7 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if (indexPath.row < self.items!.count) {
-            CommandNavigateToItemDetail.executeWithNavigationController(self.navigationController!, andItem: self.items![indexPath.row])
+            CommandNavigateToItemDetail.executeWithNavigationController(self.navigationController!, withItem: self.items![indexPath.row], andColor: ColorProvider.colorForItemPosition(indexPath.item))
         } else {
             self.dataProvder?.loadNextPage()
         }
