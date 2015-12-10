@@ -64,6 +64,7 @@ class ItemDetailViewController : UIViewController {
         let storyboard = UIStoryboard(name: "ProfileViewController", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         vc.testProfile = item!.profile
+        vc.view.backgroundColor = self.view.backgroundColor
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
