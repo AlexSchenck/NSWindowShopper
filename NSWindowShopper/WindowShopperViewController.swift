@@ -14,6 +14,8 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
     var items : [Item]?
     weak var dataProvder : ItemDataProvider?
     
+    private let padding : CGFloat = 10.0
+    
     // MARK - Lifecycle
     
     override func viewDidLoad() {
@@ -31,8 +33,8 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 10, right: 5)
-        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: self.padding, left: self.padding, bottom: self.padding, right: self.padding)
+        layout.minimumLineSpacing = self.padding * 2
         self.collectionView?.setCollectionViewLayout(layout, animated: false)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "deviceOrientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
@@ -74,7 +76,7 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
     // MARK - UICollectionView
     
     func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        return CGSizeMake(collectionView.frame.width - 10, collectionView.frame.height - collectionView.contentInset.top - 20)
+        return CGSizeMake(collectionView.frame.width - self.padding * 2, collectionView.frame.height - collectionView.contentInset.top - self.padding * 2)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -20,7 +20,7 @@ class WindowShopperViewCell : UICollectionViewCell {
     
     func configureWithItem(item : Item) {
         if (!hasConfiguredStaticUI) {
-            self.contentView.layer.cornerRadius = 3.0;
+            self.contentView.layer.cornerRadius = 9.0;
             //self.contentView.layer.borderColor = UIColor(white: 0.9, alpha: 1).CGColor
            // self.contentView.layer.borderWidth = 2
             self.contentView.clipsToBounds = true;
