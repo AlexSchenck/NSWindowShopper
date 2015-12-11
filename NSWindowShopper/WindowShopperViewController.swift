@@ -55,6 +55,10 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
     }
     
     func deviceOrientationDidChange() {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
+            return;
+        }
+        
         if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
             self.collectionView?.contentInset.top = 88
         } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {

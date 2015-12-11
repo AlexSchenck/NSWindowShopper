@@ -40,6 +40,10 @@ class ItemListTableViewController : UITableViewController, NeedsDataFromSearchRe
     }
     
     func deviceOrientationDidChange() {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
+            return;
+        }
+        
         if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
             self.tableView.contentInset.top = 88
         } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {

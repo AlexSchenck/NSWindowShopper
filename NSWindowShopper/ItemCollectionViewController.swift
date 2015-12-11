@@ -38,6 +38,10 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
     }
     
     func updateNumberOfColumns() {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
+            return;
+        }
+        
         let originalNumber = self.numberOfColumns;
         if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
             self.numberOfColumns = 3
