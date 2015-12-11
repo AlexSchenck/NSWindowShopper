@@ -31,34 +31,7 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         self.collectionView?.setCollectionViewLayout(layout, animated: false)
-        
-//        self.updateNumberOfColumns()
-//        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNumberOfColumns", name: UIDeviceOrientationDidChangeNotification, object: nil)
-    }
-    
-//    func updateNumberOfColumns() {
-//        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
-//            return;
-//        }
-//        
-//        let originalNumber = self.numberOfColumns;
-//        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
-//            self.numberOfColumns = 3
-//            self.collectionView?.contentInset.top = 88
-//        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
-//            self.numberOfColumns = 2
-//            self.collectionView?.contentInset.top = 108
-//            
-//            if(self.collectionView?.contentOffset.y == -88) {
-//                self.collectionView?.contentOffset.y = -108
-//            }
-//        }
-//        
-//        if (originalNumber != self.numberOfColumns) {
-//            self.collectionView?.collectionViewLayout.invalidateLayout()
-//        }
-//    }
+}
     
     override func viewWillLayoutSubviews() {
         if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
