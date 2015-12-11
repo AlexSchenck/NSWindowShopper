@@ -19,6 +19,7 @@
 		4EDCF6021C1758140073A045 /* ItemDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCF6011C1758140073A045 /* ItemDataProvider.swift */; };
 		4EDCF6041C17B73A0073A045 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCF6031C17B73A0073A045 /* ItemCollectionViewCell.swift */; };
 		4EDCF6061C19ED1F0073A045 /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCF6051C19ED1F0073A045 /* ColorProvider.swift */; };
+		4EDCF6081C1A47150073A045 /* WindowShopperViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDCF6071C1A47150073A045 /* WindowShopperViewCell.swift */; };
 		9DFDE2DD1C0E9294007DFE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */; };
 		9DFDE2E41C0E9294007DFE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */; };
 		9DFDE2E71C0E9294007DFE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFDE2E51C0E9294007DFE93 /* LaunchScreen.storyboard */; };
@@ -47,6 +48,7 @@
 		4EDCF6011C1758140073A045 /* ItemDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDataProvider.swift; sourceTree = "<group>"; };
 		4EDCF6031C17B73A0073A045 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EDCF6051C19ED1F0073A045 /* ColorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
+		4EDCF6071C1A47150073A045 /* WindowShopperViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowShopperViewCell.swift; sourceTree = "<group>"; };
 		9DFDE2D91C0E9294007DFE93 /* NSWindowShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSWindowShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFDE2DC1C0E9294007DFE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DFDE2E31C0E9294007DFE93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,11 +82,12 @@
 			children = (
 				9DFDE2EE1C0E92EA007DFE93 /* HomeViewController.storyboard */,
 				9DFDE2F01C0E9305007DFE93 /* HomeViewController.swift */,
-				4E30A6401C1520CE001540CF /* ItemCollectionViewController.swift */,
-				4EDCF6031C17B73A0073A045 /* ItemCollectionViewCell.swift */,
 				4E30A63C1C151990001540CF /* ItemListTableViewController.swift */,
 				4E6589411C154C20009ADAE6 /* ItemListTableViewCell.swift */,
+				4E30A6401C1520CE001540CF /* ItemCollectionViewController.swift */,
+				4EDCF6031C17B73A0073A045 /* ItemCollectionViewCell.swift */,
 				4E30A6421C15252A001540CF /* WindowShopperViewController.swift */,
+				4EDCF6071C1A47150073A045 /* WindowShopperViewCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				4E30A6431C15252A001540CF /* WindowShopperViewController.swift in Sources */,
 				4EDCF6041C17B73A0073A045 /* ItemCollectionViewCell.swift in Sources */,
 				9DFDE2DD1C0E9294007DFE93 /* AppDelegate.swift in Sources */,
+				4EDCF6081C1A47150073A045 /* WindowShopperViewCell.swift in Sources */,
 				9DFDE2F11C0E9305007DFE93 /* HomeViewController.swift in Sources */,
 				4EDCF6021C1758140073A045 /* ItemDataProvider.swift in Sources */,
 				4E30A63F1C151E0B001540CF /* NeedsDataFromSearchResults.swift in Sources */,

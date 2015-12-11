@@ -19,6 +19,7 @@ class Item {
     var locationName : String?
     var datePosted : NSDate?
     var imageURL : String?
+    var hdImageURL : String?
     
     func formattedPriceText() -> String {
         if (self.price!.doubleValue % 1 == 0) {
