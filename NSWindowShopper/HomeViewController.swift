@@ -78,6 +78,10 @@ class HomeViewController : UIViewController, ItemDataProvider, SearchResultsProx
     }
     
     func addConstraintsToViewController(viewController : UIViewController) {
+        if (viewController.view.superview != self.view) {
+            return;
+        }
+        
         let viewDictionary = ["view" : viewController.view]
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: viewDictionary))

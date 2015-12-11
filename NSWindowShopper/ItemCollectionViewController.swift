@@ -32,17 +32,35 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
         layout.minimumLineSpacing = 5
         self.collectionView?.setCollectionViewLayout(layout, animated: false)
         
-        self.updateNumberOfColumns()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNumberOfColumns", name: UIDeviceOrientationDidChangeNotification, object: nil)
+//        self.updateNumberOfColumns()
+//        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNumberOfColumns", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
-    func updateNumberOfColumns() {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
-            return;
-        }
-        
-        let originalNumber = self.numberOfColumns;
+//    func updateNumberOfColumns() {
+//        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
+//            return;
+//        }
+//        
+//        let originalNumber = self.numberOfColumns;
+//        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
+//            self.numberOfColumns = 3
+//            self.collectionView?.contentInset.top = 88
+//        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
+//            self.numberOfColumns = 2
+//            self.collectionView?.contentInset.top = 108
+//            
+//            if(self.collectionView?.contentOffset.y == -88) {
+//                self.collectionView?.contentOffset.y = -108
+//            }
+//        }
+//        
+//        if (originalNumber != self.numberOfColumns) {
+//            self.collectionView?.collectionViewLayout.invalidateLayout()
+//        }
+//    }
+    
+    override func viewWillLayoutSubviews() {
         if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
             self.numberOfColumns = 3
             self.collectionView?.contentInset.top = 88
@@ -55,8 +73,16 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
             }
         }
         
-        if (originalNumber != self.numberOfColumns) {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        coordinator.animateAlongsideTransition({ (context) -> Void in
             self.collectionView?.collectionViewLayout.invalidateLayout()
+            }) { (context) -> Void in
+                self.collectionView?.reloadData()
         }
     }
     
@@ -68,15 +94,8 @@ class ItemCollectionViewController : UICollectionViewController, NeedsDataFromSe
     // MARK - UICollectionView
     
     func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        
-        if (indexPath.item < self.items!.count) {
-            let imageSize = collectionView.frame.width/self.numberOfColumns - 7.5
-            return CGSizeMake(imageSize, imageSize + 80)
-        } else {
-            let sizeOffset : CGFloat = 10;
-            return CGSizeMake(collectionView.frame.width - sizeOffset, 120)
-        }
-
+        let imageSize = collectionView.frame.width/self.numberOfColumns - 7.5
+        return CGSizeMake(imageSize, imageSize + 80)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

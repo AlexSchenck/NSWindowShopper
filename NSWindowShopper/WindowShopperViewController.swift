@@ -36,8 +36,6 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
         layout.sectionInset = UIEdgeInsets(top: self.padding, left: self.padding, bottom: self.padding, right: self.padding)
         layout.minimumLineSpacing = self.padding * 2
         self.collectionView?.setCollectionViewLayout(layout, animated: false)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deviceOrientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,22 +52,14 @@ class WindowShopperViewController : UICollectionViewController, NeedsDataFromSea
         super.viewWillLayoutSubviews()
     }
     
-    func deviceOrientationDidChange() {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.PortraitUpsideDown) {
-            return;
-        }
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
-        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
-            self.collectionView?.contentInset.top = 88
-        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
-            self.collectionView?.contentInset.top = 108
-            
-            if(self.collectionView?.contentOffset.y == -88) {
-                self.collectionView?.contentOffset.y = -108
-            }
+        coordinator.animateAlongsideTransition({ (context) -> Void in
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+        }) { (context) -> Void in
+            self.collectionView?.reloadData()
         }
-        
-        self.collectionView?.collectionViewLayout.invalidateLayout()
     }
 
     func reloadWithData(items: [Item]?) {
