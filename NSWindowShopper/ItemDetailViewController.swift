@@ -17,28 +17,28 @@ class ItemDetailViewController : UIViewController {
     @IBOutlet weak var ItemName: UILabel!
     @IBOutlet weak var ItemLocation: UILabel!
     @IBOutlet weak var DatePosted: UILabel!
+    @IBOutlet weak var DescriptionLabel: UILabel!
     @IBOutlet weak var ItemDescription: UILabel!
     @IBOutlet weak var ToProfileButton: UIButton!
+    @IBOutlet weak var ShadowView: UIView!
     
     var item : Item?
     
     override func viewDidLoad() {
         
         weak var weakSelf = self;
-        ImageLoader.loadImageAtURL(item!.imageURL!) { (loadedImage, _) -> Void in
+        ImageLoader.loadImageAtURL(item!.hdImageURL!) { (loadedImage, _) -> Void in
             if (weakSelf != nil) {
                 weakSelf!.ItemImage.image = loadedImage
             }
         }
         
         ItemImage.clipsToBounds = true
+        ItemImage.contentMode = UIViewContentMode.ScaleAspectFill
+        ItemImage.layer.cornerRadius = 5
         
         ItemName.text = item!.name
-        
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = .CurrencyStyle
-        ItemPrice.text = numberFormatter.stringFromNumber(item!.price!)//"$\(item!.price!)"
-        
+        ItemPrice.text = item!.formattedPriceText()
         ItemLocation.text = "Located in \(item!.locationName!)"
         
         let dateFormatter = NSDateFormatter()
@@ -57,7 +57,43 @@ class ItemDetailViewController : UIViewController {
             ToProfileButton.setTitle("\(vendorName)'s Profile", forState: UIControlState.Normal)
         }
         
+        ToProfileButton.layer.cornerRadius = 5
+        
         self.title = item!.name
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ToProfileButton.setTitleColor(self.view.backgroundColor, forState: UIControlState.Normal)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(1, animations: {
+            self.ItemImage.alpha = 1
+        })
+        
+        UIView.animateWithDuration(1, delay: 0.5, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
+            self.ItemPrice.alpha = 1
+            self.ItemName.alpha = 1
+            self.ItemLocation.alpha = 1
+            self.DatePosted.alpha = 1
+            self.DescriptionLabel.alpha = 1
+            self.ItemDescription.alpha = 1
+            self.ToProfileButton.alpha = 1
+        }, completion: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        ShadowView.layer.shadowColor = UIColor.blackColor().CGColor
+        ShadowView.layer.shadowOffset = CGSizeZero
+        ShadowView.layer.shadowOpacity = 0.7
+        ShadowView.layer.shadowRadius = 15
+        ShadowView.addSubview(ItemImage)
     }
     
     @IBAction func navigateToProfileViewController(sender: AnyObject) {
