@@ -35,11 +35,12 @@ class ProfileViewController : UIViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         profileMemberSince!.text = "Member since: " + dateFormatter.stringFromDate(testProfile!.dateJoined!)
-  
+
+        ratingStar.backgroundColor = self.view.backgroundColor
         ratingStar.rating = Double((testProfile?.ratingScore)!)
         ratingStar.settings.fillMode = .Precise
         profileRating.text = String(Double((testProfile?.ratingScore)!)) + " stars across " + String(testProfile!.ratingCount!) + " reviews"
-        
+
         self.title = testProfile!.displayName
     }
 }

@@ -24,10 +24,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-KK-pEu" customClass="CosmosView" customModule="NSWindowShopper" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-KK-pEu" customClass="CosmosView" customModule="NSWindowShopper" customModuleProvider="target">
                                 <rect key="frame" x="240" y="508" width="120" height="20"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSe-aW-2am">
                                 <rect key="frame" x="276" y="415" width="49" height="20.5"/>
@@ -52,7 +54,6 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ijd-UZ-aen" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="1EV-g6-OQg"/>
                             <constraint firstItem="RSe-aW-2am" firstAttribute="centerX" secondItem="cV3-4K-J7B" secondAttribute="centerX" id="4so-Hn-oWx"/>
